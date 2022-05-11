@@ -1,0 +1,22 @@
+{
+  "server": {
+    "mode": "debug",
+    "http_port": ":8888",
+    "log_path": "./logs"
+  },
+  "redis": {
+    "hosts": "0.0.0.0",
+    "ports": "6379",
+    "password": ""
+  },
+  "database": {
+    "driver": "postgres",
+    "host": "",
+    "port": "",
+    "name": "",
+    "user": "",
+    "password": ""
+  },
+  "service": {
+  }
+}

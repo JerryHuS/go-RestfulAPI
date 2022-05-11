@@ -1,0 +1,162 @@
+basePath: /api/v1
+definitions:
+  model.Address:
+    properties:
+      city:
+        type: string
+      country:
+        type: string
+      geohash:
+        type: string
+      lat:
+        type: number
+      lon:
+        type: number
+    type: object
+  users.UserReq:
+    properties:
+      address:
+        $ref: '#/definitions/model.Address'
+      description:
+        type: string
+      dob:
+        type: string
+      followers:
+        items:
+          type: integer
+        type: array
+      following:
+        items:
+          type: integer
+        type: array
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+host: 127.0.0.1:8888
+info:
+  contact: {}
+  title: Swagger API DEMO
+  version: v1.0
+paths:
+  /nearbyFriends/{name}:
+    get:
+      consumes:
+      - application/json
+      description: 获取附近朋友
+      parameters:
+      - description: Username
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"Code":10001,"Message":"请求参数不合法"}'
+          schema:
+            type: string
+      summary: 获取附近朋友
+      tags:
+      - ""
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: 获取所有用户
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"Code":10001,"Message":"请求参数不合法"}'
+          schema:
+            type: string
+      summary: 获取用户列表
+      tags:
+      - ""
+    post:
+      consumes:
+      - application/json
+      description: 创建用户
+      parameters:
+      - description: CreateUser
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/users.UserReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"Code":10001,"Message":"请求参数不合法"}'
+          schema:
+            type: string
+      summary: 创建用户
+      tags:
+      - ""
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 根据id删除指定用户
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"Code":10001,"Message":"请求参数不合法"}'
+          schema:
+            type: string
+      summary: 删除用户
+      tags:
+      - ""
+    get:
+      consumes:
+      - application/json
+      description: 根据id获取指定用户
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"Code":10001,"Message":"请求参数不合法"}'
+          schema:
+            type: string
+      summary: 获取单个用户
+      tags:
+      - ""
+    put:
+      consumes:
+      - application/json
+      description: 更新用户信息
+      parameters:
+      - description: CreateUser
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/users.UserReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"Code":10001,"Message":"请求参数不合法"}'
+          schema:
+            type: string
+      summary: 更新用户
+      tags:
+      - ""
+swagger: "2.0"
